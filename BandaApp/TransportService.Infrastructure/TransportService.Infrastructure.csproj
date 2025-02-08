@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.ExceptionHandling\Shared.ExceptionHandling.csproj" />
+  </ItemGroup>
+
 </Project>
