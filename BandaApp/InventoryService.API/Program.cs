@@ -1,3 +1,5 @@
+using InventoryService.API.Configurations;
+using InventoryService.Infrastructure.CrossCutting.IoC;
 using Shared.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services, builder.Configuration);
+
 
 var app = builder.Build();
 
