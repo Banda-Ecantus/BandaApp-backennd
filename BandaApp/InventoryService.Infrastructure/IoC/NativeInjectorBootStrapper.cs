@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using InventoryService.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace InventoryService.Infrastructure.CrossCutting.IoC
+namespace InventoryService.Infrastructure.CrossCutting.IoC.IoC
 {
     public static class NativeInjectorBootStrapper
     {

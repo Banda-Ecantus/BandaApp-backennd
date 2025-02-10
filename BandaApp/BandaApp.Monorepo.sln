@@ -45,8 +45,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportService.API", "Tra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowService.API", "ShowService.API\ShowService.API.csproj", "{17A02810-7B09-451C-9CCF-E185EB208AED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Infrastructure.CrossCutting.IoC", "InventoryService.Infra.CrossCutting.IoC\InventoryService.Infrastructure.CrossCutting.IoC.csproj", "{84A7E1FB-AB2A-428D-9E13-D1D622833B9D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,10 +103,6 @@ Global
 		{17A02810-7B09-451C-9CCF-E185EB208AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17A02810-7B09-451C-9CCF-E185EB208AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17A02810-7B09-451C-9CCF-E185EB208AED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84A7E1FB-AB2A-428D-9E13-D1D622833B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84A7E1FB-AB2A-428D-9E13-D1D622833B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84A7E1FB-AB2A-428D-9E13-D1D622833B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84A7E1FB-AB2A-428D-9E13-D1D622833B9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +124,5 @@ Global
 		{350A6EE1-01B1-44B1-B2F3-740E812F6FDB} = {8AE559AA-C9AE-46F5-B3AF-796A06F62019}
 		{4E453F85-40FC-49CA-AEF5-866DD703E44E} = {8AE559AA-C9AE-46F5-B3AF-796A06F62019}
 		{17A02810-7B09-451C-9CCF-E185EB208AED} = {1A4D1727-54AE-42FA-B9F3-BE2F18712C67}
-		{84A7E1FB-AB2A-428D-9E13-D1D622833B9D} = {47EF707B-5136-4740-AB6D-A7A952EAB62D}
 	EndGlobalSection
 EndGlobal

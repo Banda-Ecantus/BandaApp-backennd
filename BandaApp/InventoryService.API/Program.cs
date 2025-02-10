@@ -1,5 +1,4 @@
 using InventoryService.API.Configurations;
-using InventoryService.Infrastructure.CrossCutting.IoC;
 using Shared.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);

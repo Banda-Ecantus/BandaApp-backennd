@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InventoryService.Domain\InventoryService.Domain.csproj" />
+    <ProjectReference Include="..\InventoryService.Infrastructure\InventoryService.Infrastructure.csproj" />
     <ProjectReference Include="..\Shared.ExceptionHandling\Shared.ExceptionHandling.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOS\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
