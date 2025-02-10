@@ -1,21 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Shared.Infrastructure;
 
 namespace InventoryService.Infrastructure.Context
 {
     public class InventoryDbContext : DbContext
     {
-        private readonly IConfiguration _configuration;
 
-        public InventoryDbContext(DbContextOptions<InventoryDbContext> options, IConfiguration configuration) : base(options) {
-            _configuration = configuration;
-        }
+        public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connectionString = _configuration.GetConnectionString("DefaultConnection");
+                var connectionString = Settings.PostgresConnectionString;
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }

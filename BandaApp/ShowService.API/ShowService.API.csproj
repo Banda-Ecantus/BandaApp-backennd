@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared.ExceptionHandling\Shared.ExceptionHandling.csproj" />
+    <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 using InventoryService.API.Configurations;
 using Shared.ExceptionHandling;
+using Shared.Infrastructure.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,11 @@ builder.Services.AddSwaggerGen();
 
 // Load configuration from environment variables
 builder.Configuration.AddEnvironmentVariables();
+
+// Add Keycloak configuration
+KeycloakConfig.AddKeycloakConfiguration(builder.Services, builder.Configuration);
+builder.Services.AddHttpContextAccessor();
+
 
 DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services);
 

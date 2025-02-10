@@ -12,7 +12,7 @@ namespace InventoryService.Infrastructure.CrossCutting.IoC.IoC
         public static void RegisterDbContext(this IServiceCollection services)
         {
             services.AddDbContext<InventoryDbContext>(options =>
-                options.UseNpgsql(Settings.ConnectionString));
+                options.UseNpgsql(Settings.PostgresConnectionString));
         }
 
         public static void RegisterServices(this IServiceCollection services)

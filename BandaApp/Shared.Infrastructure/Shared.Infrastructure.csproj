@@ -6,4 +6,33 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Keycloak.AuthServices.Authentication" Version="2.6.0" />
+    <PackageReference Include="Keycloak.AuthServices.Authorization" Version="2.6.0" />
+    <PackageReference Include="Keycloak.AuthServices.Sdk" Version="2.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.12" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
+    <ProjectReference Include="..\Shared.ExceptionHandling\Shared.ExceptionHandling.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SharedResources.Designer.cs">
+      <DependentUpon>SharedResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="SharedResources.resx">
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
