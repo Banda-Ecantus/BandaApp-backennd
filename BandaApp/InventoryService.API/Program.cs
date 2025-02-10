@@ -10,7 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services, builder.Configuration);
+
+// Load configuration from environment variables
+builder.Configuration.AddEnvironmentVariables();
+
+DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services);
 
 
 var app = builder.Build();

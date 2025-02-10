@@ -2,16 +2,17 @@
 using Microsoft.Extensions.Configuration;
 using InventoryService.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using Shared.Infrastructure;
 
 namespace InventoryService.Infrastructure.CrossCutting.IoC.IoC
 {
     public static class NativeInjectorBootStrapper
     {
 
-        public static void RegisterDbContext(this IServiceCollection services, IConfiguration configuration)
+        public static void RegisterDbContext(this IServiceCollection services)
         {
             services.AddDbContext<InventoryDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Settings.ConnectionString));
         }
 
         public static void RegisterServices(this IServiceCollection services)

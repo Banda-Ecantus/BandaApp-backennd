@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shared.ExceptionHandling\Shared.ExceptionHandling.csproj" />
-    <ProjectReference Include="..\ShowService.API\ShowService.API.csproj" />
-  </ItemGroup>
-
 </Project>

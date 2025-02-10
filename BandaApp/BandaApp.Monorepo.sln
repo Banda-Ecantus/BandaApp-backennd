@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportService.API", "Tra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowService.API", "ShowService.API\ShowService.API.csproj", "{17A02810-7B09-451C-9CCF-E185EB208AED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Infrastructure", "Shared.Infrastructure\Shared.Infrastructure.csproj", "{DF4379EE-F379-4C0B-BE7A-29EA4CD2CBDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{17A02810-7B09-451C-9CCF-E185EB208AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17A02810-7B09-451C-9CCF-E185EB208AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17A02810-7B09-451C-9CCF-E185EB208AED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4379EE-F379-4C0B-BE7A-29EA4CD2CBDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4379EE-F379-4C0B-BE7A-29EA4CD2CBDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4379EE-F379-4C0B-BE7A-29EA4CD2CBDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4379EE-F379-4C0B-BE7A-29EA4CD2CBDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,5 +130,6 @@ Global
 		{350A6EE1-01B1-44B1-B2F3-740E812F6FDB} = {8AE559AA-C9AE-46F5-B3AF-796A06F62019}
 		{4E453F85-40FC-49CA-AEF5-866DD703E44E} = {8AE559AA-C9AE-46F5-B3AF-796A06F62019}
 		{17A02810-7B09-451C-9CCF-E185EB208AED} = {1A4D1727-54AE-42FA-B9F3-BE2F18712C67}
+		{DF4379EE-F379-4C0B-BE7A-29EA4CD2CBDE} = {49F04281-D8E8-47A0-96CF-15F14076FB6A}
 	EndGlobalSection
 EndGlobal
