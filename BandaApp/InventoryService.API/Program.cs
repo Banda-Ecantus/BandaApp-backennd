@@ -19,6 +19,8 @@ builder.Configuration.AddEnvironmentVariables();
 KeycloakConfig.AddKeycloakConfiguration(builder.Services, builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services);
 

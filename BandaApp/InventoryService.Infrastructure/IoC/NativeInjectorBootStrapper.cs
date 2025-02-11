@@ -1,7 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+﻿using InventoryService.Application.Services;
+using InventoryService.Domain.Interfaces;
 using InventoryService.Infrastructure.Context;
+using InventoryService.Infrastructure.Repositories;
+using InventoryService.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Shared.Infrastructure;
 
 namespace InventoryService.Infrastructure.CrossCutting.IoC.IoC
@@ -17,12 +20,12 @@ namespace InventoryService.Infrastructure.CrossCutting.IoC.IoC
 
         public static void RegisterServices(this IServiceCollection services)
         {
-            //services.AddScoped<IService, Service>();
+            services.AddScoped<IInventoryItemService, InventoryItemService>();
         }
 
         public static void RegisterRepositories(this IServiceCollection services)
         {
-            //services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IInventoryItemRepository, InventoryItemRepository>();
         }
 
         public static void RegisterValidators(this IServiceCollection services)

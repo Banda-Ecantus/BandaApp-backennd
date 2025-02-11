@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InventoryService.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Shared.Infrastructure;
 
@@ -17,5 +18,7 @@ namespace InventoryService.Infrastructure.Context
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }
+        public DbSet<InventoryItem> InventoryItems { get; set; }
+
     }
 }

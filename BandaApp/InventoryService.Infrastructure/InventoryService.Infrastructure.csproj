@@ -13,13 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InventoryService.Application\InventoryService.Application.csproj" />
     <ProjectReference Include="..\InventoryService.Domain\InventoryService.Domain.csproj" />
     <ProjectReference Include="..\Shared.ExceptionHandling\Shared.ExceptionHandling.csproj" />
     <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AutoMapper\" />
   </ItemGroup>
 
 </Project>
