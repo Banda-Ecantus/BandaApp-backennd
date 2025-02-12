@@ -25,7 +25,7 @@ namespace Shared.ExceptionHandling
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, SharedResources.UnexpectedError);
+                _logger.LogError(ex, "{UnexpectedError}: {Message}", SharedResources.UnexpectedError, ex.Message );
                 await HandleExceptionAsync(context, ex);
             }
         }
@@ -41,7 +41,7 @@ namespace Shared.ExceptionHandling
 
             var response = new
             {
-                Message = SharedResources.UnexpectedError,
+                Message = exception.Message,
                 StatusCode = statusCode,
                 Type = exception.GetType().Name
             };

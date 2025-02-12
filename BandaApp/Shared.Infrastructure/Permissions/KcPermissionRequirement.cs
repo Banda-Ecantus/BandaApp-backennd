@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Shared.Domain;
 using Shared.ExceptionHandling;
 using Shared.Infrastructure.DTOS;
 using System.Net;
@@ -55,7 +56,7 @@ namespace Shared.Infrastructure.Permissions
                     }
                 }
             }
-
+            
             throw new UnauthorizedException(SharedResources.UnauthorizedMessage, HttpStatusCode.Unauthorized);
         }
 

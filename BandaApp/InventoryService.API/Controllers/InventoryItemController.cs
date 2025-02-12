@@ -19,11 +19,9 @@ namespace InventoryService.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-           
+
                 var result = await _service.GetAllsAsync();
                 return Ok(result);
-            
-
         }
 
         // GET api/<InventoryController>/5

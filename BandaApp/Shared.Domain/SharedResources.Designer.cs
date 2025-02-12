@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Shared.Domain {
-    using System;
-    
-    
+namespace Shared.Domain
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,94 +22,114 @@ namespace Shared.Domain {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SharedResources {
-        
+    public class SharedResources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public SharedResources() {
+        public SharedResources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        public static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Shared.Domain.SharedResources", typeof(SharedResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
-            get {
+        public static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Acesso negado.
+        ///   Looks up a localized string similar to Acesso negado. Você não tem permissão para visualizar este recurso..
         /// </summary>
-        public static string AccessDeniedMessage {
-            get {
+        public static string AccessDeniedMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("AccessDeniedMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Audiência do Keycloak está ausente ou inválida.
+        ///   Looks up a localized string similar to Audiência inválida na configuração do Keycloak. Verifique os parâmetros do token..
         /// </summary>
-        public static string KEYCLOACK_INVALID_AUDIENCE {
-            get {
+        public static string KEYCLOACK_INVALID_AUDIENCE
+        {
+            get
+            {
                 return ResourceManager.GetString("KEYCLOACK_INVALID_AUDIENCE", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to A seção de configuração do Keycloak está ausente ou inválida..
+        ///   Looks up a localized string similar to Configuração inválida do Keycloak. Verifique as credenciais e os parâmetros de autenticação..
         /// </summary>
-        public static string KEYCLOACK_INVALID_CONFIG {
-            get {
+        public static string KEYCLOACK_INVALID_CONFIG
+        {
+            get
+            {
                 return ResourceManager.GetString("KEYCLOACK_INVALID_CONFIG", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Permission.
+        ///   Looks up a localized string similar to asd.
         /// </summary>
-        public static string POLICY_PREFIX {
-            get {
+        public static string POLICY_PREFIX
+        {
+            get
+            {
                 return ResourceManager.GetString("POLICY_PREFIX", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Não autorizado.
+        ///   Looks up a localized string similar to Você não tem permissão para realizar esta ação..
         /// </summary>
-        public static string UnauthorizedMessage {
-            get {
+        public static string UnauthorizedMessage
+        {
+            get
+            {
                 return ResourceManager.GetString("UnauthorizedMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Ocorreu um erro inexperado.
+        ///   Looks up a localized string similar to Ocorreu um erro inesperado. Por favor, tente novamente mais tarde..
         /// </summary>
-        public static string UnexpectedError {
-            get {
+        public static string UnexpectedError
+        {
+            get
+            {
                 return ResourceManager.GetString("UnexpectedError", resourceCulture);
             }
         }
