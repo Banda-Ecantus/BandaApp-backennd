@@ -32,5 +32,9 @@ namespace InventoryService.Infrastructure.CrossCutting.IoC.IoC
         {
             //services.AddScoped<IValidator, Validator>();
         }
+        public static void RegisterAutoMapper(IServiceCollection services)
+        {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        }
     }
 }

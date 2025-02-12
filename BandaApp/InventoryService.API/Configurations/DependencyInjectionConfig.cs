@@ -13,6 +13,7 @@ namespace InventoryService.API.Configurations
             NativeInjectorBootStrapper.RegisterServices(services);
             NativeInjectorBootStrapper.RegisterRepositories(services);
             NativeInjectorBootStrapper.RegisterValidators(services);
+            NativeInjectorBootStrapper.RegisterAutoMapper(services);
         }
     }
 }
