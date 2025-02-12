@@ -4,10 +4,10 @@ using InventoryService.Domain.Models;
 
 namespace InventoryService.Application.AutoMapper
 {
-    public class InvetoryItemProfile : Profile
+    public class InvetoryProfile : Profile
     {
 
-        public InvetoryItemProfile()
+        public InvetoryProfile()
         {
             CreateMap<InventoryItem, InventoryItemDto>().ReverseMap();
         }
