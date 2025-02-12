@@ -30,20 +30,6 @@ namespace Shared.Infrastructure.Configurations
                 }
             );
 
-
-            //KeycloakProtectionClientOptions authorizationOptions = new()
-            //{
-            //    Realm = keycloakConfig.Realm,
-            //    AuthServerUrl = keycloakConfig.AuthServerUrl,
-            //    SslRequired = keycloakConfig.SslRequired,
-            //    Resource = keycloakConfig.Resource,
-            //    VerifyTokenAudience = keycloakConfig.VerifyTokenAudience,
-            //    Credentials = new KeycloakClientInstallationCredentials
-            //    {
-            //        Secret = keycloakConfig.Credentials.Secret
-            //    }
-            //};
-
             services.AddKeycloakAuthorization(configuration);
 
             KeycloakAdminClientOptions adminClientOptions = new()
