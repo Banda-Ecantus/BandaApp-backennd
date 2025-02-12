@@ -121,6 +121,9 @@
     <value>Acesso negado. Você não tem permissão para visualizar este recurso.</value>
     <comment>Acesso negado. Você não tem permissão para visualizar este recurso.</comment>
   </data>
+  <data name="inventoryRetrievalError" xml:space="preserve">
+    <value>Ocorreu um erro ao recuperar os itens de inventário do banco de dados.</value>
+  </data>
   <data name="KEYCLOACK_INVALID_AUDIENCE" xml:space="preserve">
     <value>Audiência inválida na configuração do Keycloak. Verifique os parâmetros do token.</value>
   </data>
@@ -129,6 +132,9 @@
   </data>
   <data name="POLICY_PREFIX" xml:space="preserve">
     <value>asd</value>
+  </data>
+  <data name="postgresInventoryError" xml:space="preserve">
+    <value>Erro ao acessar o inventário no banco de dados PostgreSQL.</value>
   </data>
   <data name="UnauthorizedMessage" xml:space="preserve">
     <value>Você não tem permissão para realizar esta ação.</value>

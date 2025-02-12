@@ -3,6 +3,7 @@ using InventoryService.Domain.Models;
 using InventoryService.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Shared.Domain;
 using Shared.ExceptionHandling;
 
 namespace InventoryService.Infrastructure.Repositories
@@ -33,18 +34,18 @@ namespace InventoryService.Infrastructure.Repositories
             }
             catch (DbUpdateException dbEx)
             {
-                _logger.LogError(dbEx, "An error occurred while updating the database.");
-                throw new ValidationException("An error occurred while retrieving inventory items from the database.");
+                _logger.LogError(dbEx, SharedResources.inventoryRetrievalError);
+                throw new ValidationException(SharedResources.inventoryRetrievalError);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An unexpected error occurred while retrieving inventory items.");
-                throw new GenericException("An unexpected error occurred while retrieving inventory items.");
+                _logger.LogError(ex, SharedResources.postgresInventoryError);
+                throw new GenericException(SharedResources.postgresInventoryError);
             }
         }
 
-       
-    
+
+
 
         public Task<InventoryItem> GetAsync(Guid id)
         {
