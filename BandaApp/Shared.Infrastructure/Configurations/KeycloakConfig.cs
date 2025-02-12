@@ -14,13 +14,10 @@ namespace Shared.Infrastructure.Configurations
     {
         public static void AddKeycloakConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
-            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+            ArgumentNullException.ThrowIfNull(services);
+            ArgumentNullException.ThrowIfNull(configuration);
 
-            var keycloakConfig = configuration.GetSection("Keycloak").Get<KeycloakAuthenticationOptions>();
-
-            if (keycloakConfig == null) throw new InvalidOperationException(SharedResources.KEYCLOACK_INVALID_CONFIG);
-
+            var keycloakConfig = configuration.GetSection("Keycloak").Get<KeycloakAuthenticationOptions>() ?? throw new InvalidOperationException(SharedResources.KEYCLOACK_INVALID_CONFIG);
             services.AddKeycloakWebApiAuthentication(
                 configuration,
                 (options) =>

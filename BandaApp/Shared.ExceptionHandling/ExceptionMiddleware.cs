@@ -6,16 +6,10 @@ using System.Text.Json;
 
 namespace Shared.ExceptionHandling
 {
-    public class ExceptionMiddleware
+    public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
     {
-        private readonly RequestDelegate _next;
-        private readonly ILogger<ExceptionMiddleware> _logger;
-
-        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
-        {
-            _next = next;
-            _logger = logger;
-        }
+        private readonly RequestDelegate _next = next;
+        private readonly ILogger<ExceptionMiddleware> _logger = logger;
 
         public async Task InvokeAsync(HttpContext context)
         {
@@ -41,7 +35,7 @@ namespace Shared.ExceptionHandling
 
             var response = new
             {
-                Message = exception.Message,
+                exception.Message,
                 StatusCode = statusCode,
                 Type = exception.GetType().Name
             };

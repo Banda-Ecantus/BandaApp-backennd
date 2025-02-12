@@ -13,7 +13,6 @@ namespace InventoryService.Infrastructure.Repositories
         private readonly InventoryDbContext _dbContext = dbContext;
         private readonly ILogger<InventoryItemRepository> _logger = logger;
 
-
         public Task AddAsync(InventoryItem inventory)
         {
             throw new NotImplementedException();
@@ -24,7 +23,6 @@ namespace InventoryService.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-
         public async Task<IEnumerable<InventoryItem>> GetAllAsync()
         {
             try
@@ -34,18 +32,15 @@ namespace InventoryService.Infrastructure.Repositories
             }
             catch (DbUpdateException dbEx)
             {
-                _logger.LogError(dbEx, SharedResources.inventoryRetrievalError);
+                _logger.LogError(dbEx, "{ErrorMessage}", SharedResources.inventoryRetrievalError);
                 throw new ValidationException(SharedResources.inventoryRetrievalError);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, SharedResources.postgresInventoryError);
+                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresInventoryError);
                 throw new GenericException(SharedResources.postgresInventoryError);
             }
         }
-
-
-
 
         public Task<InventoryItem> GetAsync(Guid id)
         {

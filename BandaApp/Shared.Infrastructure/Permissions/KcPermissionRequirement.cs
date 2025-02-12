@@ -11,24 +11,14 @@ using System.Text.Json.Nodes;
 
 namespace Shared.Infrastructure.Permissions
 {
-    public class KcPermissionRequirement : IAuthorizationRequirement
+    public class KcPermissionRequirement(string permission) : IAuthorizationRequirement
     {
-        public KcPermissionRequirement(string permission) =>
-            Permission = permission;
-
-        public string Permission { get; }
+        public string Permission { get; } = permission;
     }
 
-    public class PermissionRequirementHandler : AuthorizationHandler<KcPermissionRequirement>
+    public class PermissionRequirementHandler(IHttpContextAccessor httpContextAccessor) : AuthorizationHandler<KcPermissionRequirement>
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-
-
-        public PermissionRequirementHandler(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
-
-        }
+        private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
         private static async Task<UserInfoDto> GetUserInfoAsync(string token)
         {
@@ -111,17 +101,15 @@ namespace Shared.Infrastructure.Permissions
             var roles = new List<string>();
             try
             {
-                using (JsonDocument jd = JsonDocument.Parse(JsonSerializer.Serialize(userInfo.ResourceAccess)))
+                using JsonDocument jd = JsonDocument.Parse(JsonSerializer.Serialize(userInfo.ResourceAccess));
+                var resourcesNamesRoot = JsonNode.Parse(jd.RootElement.GetRawText())?.AsObject();
+                if (resourcesNamesRoot != null)
                 {
-                    var resourcesNamesRoot = JsonNode.Parse(jd.RootElement.GetRawText())?.AsObject();
-                    if (resourcesNamesRoot != null)
+                    string[] resourcesNames = resourcesNamesRoot.Select(p => p.Key).ToArray();
+                    foreach (var resource in resourcesNames)
                     {
-                        string[] resourcesNames = resourcesNamesRoot.Select(p => p.Key).ToArray();
-                        foreach (var resource in resourcesNames)
-                        {
-                            var userRoles = JsonSerializer.Deserialize<List<string>>(jd.RootElement.GetProperty(resource).GetProperty("roles").GetRawText());
-                            if (userRoles != null) roles.AddRange(userRoles);
-                        }
+                        var userRoles = JsonSerializer.Deserialize<List<string>>(jd.RootElement.GetProperty(resource).GetProperty("roles").GetRawText());
+                        if (userRoles != null) roles.AddRange(userRoles);
                     }
                 }
             }

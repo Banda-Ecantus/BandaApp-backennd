@@ -2,7 +2,7 @@
 {
     public static class SharedSettings
     {
-        private static string Secret = Environment.GetEnvironmentVariable("SECRET") ?? "";
+        private static readonly string Secret = Environment.GetEnvironmentVariable("SECRET") ?? "";
 
 
         /* variáveis para configurar o keycloak */
