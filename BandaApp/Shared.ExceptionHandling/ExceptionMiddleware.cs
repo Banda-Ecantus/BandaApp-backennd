@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Shared.Domain;
 using System.Net;
 using System.Text.Json;
 
@@ -24,7 +25,7 @@ namespace Shared.ExceptionHandling
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ocorreu um erro inesperado");
+                _logger.LogError(ex, SharedResources.UnexpectedError);
                 await HandleExceptionAsync(context, ex);
             }
         }
@@ -40,7 +41,7 @@ namespace Shared.ExceptionHandling
 
             var response = new
             {
-                Message = exception.Message,
+                Message = SharedResources.UnexpectedError,
                 StatusCode = statusCode,
                 Type = exception.GetType().Name
             };
