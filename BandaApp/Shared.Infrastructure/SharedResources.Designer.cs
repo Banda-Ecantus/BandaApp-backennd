@@ -104,5 +104,14 @@ namespace Shared.Infrastructure {
                 return ResourceManager.GetString("UnauthorizedMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro inexperado.
+        /// </summary>
+        internal static string UnexpectedError {
+            get {
+                return ResourceManager.GetString("UnexpectedError", resourceCulture);
+            }
+        }
     }
 }

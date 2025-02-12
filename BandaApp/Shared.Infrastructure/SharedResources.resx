@@ -133,4 +133,7 @@
     <value>Não autorizado</value>
     <comment>Mensagem de exceção</comment>
   </data>
+  <data name="UnexpectedError" xml:space="preserve">
+    <value>Ocorreu um erro inexperado</value>
+  </data>
 </root>

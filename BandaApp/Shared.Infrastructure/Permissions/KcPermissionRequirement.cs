@@ -31,8 +31,8 @@ namespace Shared.Infrastructure.Permissions
 
         private static async Task<UserInfoDto> GetUserInfoAsync(string token)
         {
-            var AuthServerUrl = Settings.kcAuthUrl;
-            var Realm = Settings.kcRealm;
+            var AuthServerUrl = SharedSettings.kcAuthUrl;
+            var Realm = SharedSettings.kcRealm;
 
             using (var client = new HttpClient())
             {
