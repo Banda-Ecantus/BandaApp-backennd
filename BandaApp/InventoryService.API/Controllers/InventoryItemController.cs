@@ -19,15 +19,11 @@ namespace InventoryService.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            try
-            {
+           
                 var result = await _service.GetAllsAsync();
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            
+
         }
 
         // GET api/<InventoryController>/5

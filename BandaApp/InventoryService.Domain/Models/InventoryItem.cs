@@ -3,32 +3,34 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryService.Domain.Models
 {
-    [Table("InventoryItems")]
+    [Table("inventoryitems")]
 
     public class InventoryItem
     {
         [Key]
+        [Column("guid")]
         public Guid Guid { get; set; }
-
-        public int Id { get; set; }
 
         [Required]
         [MaxLength(100)]
+        [Column("name")]
         public string? Name { get; set; }
 
         [Required]
         [MaxLength(500)]
+        [Column("description")]
         public string? Description { get; set; }
 
         [Required]
-        public int SerialNumber { get; set; }
+        [Column("serialnumber")]
+        public required string SerialNumber { get; set; }
 
         [MaxLength(255)]
+        [Column("image")]
         public string? Image { get; set; }
 
         [MaxLength(255)]
+        [Column("imageurl")]
         public string? ImageUrl { get; set; }
-
-        public required string Assets { get; set; } //Patrimonio
     }
 }

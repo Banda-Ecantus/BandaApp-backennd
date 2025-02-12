@@ -1,6 +1,5 @@
 ﻿using InventoryService.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Shared.Infrastructure;
 
 namespace InventoryService.Infrastructure.Context
