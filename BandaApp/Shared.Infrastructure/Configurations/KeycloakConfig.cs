@@ -31,7 +31,7 @@ namespace Shared.Infrastructure.Configurations
 
             KeycloakAdminClientOptions adminClientOptions = new()
             {
-                Realm = keycloakConfig.Realm,
+                Realm = SharedSettings.kcRealm,
                 AuthServerUrl = keycloakConfig.AuthServerUrl,
                 SslRequired = keycloakConfig.SslRequired,
                 Resource = keycloakConfig.Resource,
