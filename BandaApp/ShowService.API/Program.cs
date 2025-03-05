@@ -10,8 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add Keycloak configuration
-KeycloakConfig.AddKeycloakConfiguration(builder.Services, builder.Configuration);
+
 // Adicionar Autorização
 builder.Services.AddAuthorization();
 

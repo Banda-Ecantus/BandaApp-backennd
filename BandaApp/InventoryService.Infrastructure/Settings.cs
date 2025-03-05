@@ -15,6 +15,11 @@
         private static string Secret = Environment.GetEnvironmentVariable("SECRET") ?? "";
 
         public static string PostgresConnectionString => postgresConnectionString;
+
+        /* variáveis para configurar o keycloak */
+
+        public static readonly string kcClientInventoryId = Environment.GetEnvironmentVariable("KC_CLIENT_ID_INVENTORY") ?? "bandaapp_backend_inventory";
+        public static readonly string kcClientInventorySecret = Environment.GetEnvironmentVariable("KC_CLIENT_SECRET_INVENTORY") ?? "FRMpuNwvoix6NYfbfsRIkUpxGwzEl1zy";
         public static string SecretKey => Secret;
     }
 }
