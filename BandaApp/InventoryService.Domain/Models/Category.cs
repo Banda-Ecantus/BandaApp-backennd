@@ -7,8 +7,8 @@ namespace InventoryService.Domain.Models
     public class Category
     {
         [Key]
-        [Column("id")]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        [Column("guid")]
+        public Guid id { get; set; } = Guid.NewGuid();
 
         [Required]
         [MaxLength(100)]

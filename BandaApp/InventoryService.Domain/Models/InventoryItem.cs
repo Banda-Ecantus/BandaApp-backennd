@@ -26,8 +26,8 @@ namespace InventoryService.Domain.Models
         public required string SerialNumber { get; set; }
 
         [Required]
-        [Column("categoryId")]
-        [ForeignKey("Category")]
+        [Column("categoryid")]
+        [ForeignKey("category")]
         public Guid CategoryId { get; set; }
 
         [MaxLength(255)]

@@ -1,4 +1,5 @@
-﻿using InventoryService.Application.Services;
+﻿using InventoryService.Application.Interfaces;
+using InventoryService.Application.Services;
 using InventoryService.Domain.Interfaces;
 using InventoryService.Infrastructure.Context;
 using InventoryService.Infrastructure.Repositories;
@@ -21,11 +22,14 @@ namespace InventoryService.Infrastructure.CrossCutting.IoC.IoC
         public static void RegisterServices(this IServiceCollection services)
         {
             services.AddScoped<IInventoryItemService, InventoryItemService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
         }
 
         public static void RegisterRepositories(this IServiceCollection services)
         {
             services.AddScoped<IInventoryItemRepository, InventoryItemRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         public static void RegisterValidators(this IServiceCollection services)

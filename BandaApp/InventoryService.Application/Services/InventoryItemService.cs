@@ -28,12 +28,6 @@ namespace InventoryService.Application.Services
             return result;
         }
 
-        public async Task<List<InventoryItemDto>> GetByCategoryAsync(Guid categoryId)
-        {
-            var result = _mapper.Map<List<InventoryItemDto>>(await _repository.GetByCategoryAsync(categoryId));
-            return result;
-        }
-
         public async Task<InventoryItemDto> CreateAsync(InventoryItemDto item)
         {
 

@@ -58,7 +58,7 @@ namespace InventoryService.Infrastructure.Repositories
         {
             try
             {
-                var result = await _dbContext.InventoryItem.ToListAsync();
+                var result = await _dbContext.InventoryItem.Include(c => c.Category).ToListAsync();
                 return result;
             }
             catch (DbUpdateException dbEx)
@@ -77,7 +77,7 @@ namespace InventoryService.Infrastructure.Repositories
         {
             try
             {
-                var result = await _dbContext.InventoryItem.FirstOrDefaultAsync(x => x.Guid == id);
+                var result = await _dbContext.InventoryItem.Include(c => c.Category).FirstOrDefaultAsync(x => x.Guid == id);
                 return result;
             }
             catch (DbUpdateException dbEx)
@@ -93,24 +93,6 @@ namespace InventoryService.Infrastructure.Repositories
             }
         }
 
-        public async Task<IEnumerable<InventoryItem>> GetByCategoryAsync(Guid categoryId)
-        {
-            try
-            {
-                var result = await _dbContext.InventoryItem.Where(x => x.CategoryId == categoryId).ToListAsync();
-                return result;
-            }
-            catch (DbUpdateException dbEx)
-            {
-                _logger.LogError(dbEx, "{ErrorMessage}", SharedResources.inventoryRetrievalError);
-                throw new ValidationException(SharedResources.inventoryRetrievalError);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresError);
-                throw new GenericException(SharedResources.postgresError);
-            }
-        }
 
         public Task UpdateAsync(InventoryItem inventory)
         {
