@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InventoryService.Application.DTOS;
 using InventoryService.Domain.Interfaces;
+using InventoryService.Domain.Models;
 using InventoryService.Interfaces.Services;
 
 namespace InventoryService.Application.Services
@@ -21,19 +22,26 @@ namespace InventoryService.Application.Services
             return result;
         }
 
-        public Task<InventoryItemDto> GetInventoryItemAsync(Guid id)
+        public async Task<InventoryItemDto> GetInventoryItemAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var result = _mapper.Map<InventoryItemDto>(await _repository.GetAsync(id));
+            return result;
         }
 
-        public Task<InventoryItemDto> CreateInventoryItemAsync(InventoryItemDto item)
+        public async Task<InventoryItemDto> CreateAsync(InventoryItemDto item)
         {
-            throw new NotImplementedException();
+
+            var inventory = _mapper.Map<InventoryItem>(item);
+            await _repository.CreateAsync(inventory);
+            return _mapper.Map<InventoryItemDto>(inventory);
         }
 
-        public Task<InventoryItemDto> UpdateInventoryItemAsync(InventoryItemDto item)
+        public async Task<InventoryItemDto> UpdateAsync(InventoryItemDto item)
         {
-            throw new NotImplementedException();
+
+            var inventory = _mapper.Map<InventoryItem>(item);
+            await _repository.UpdateAsync(inventory);
+            return _mapper.Map<InventoryItemDto>(inventory);
         }
 
         public Task DeleteInventoryItemAsync(Guid id)

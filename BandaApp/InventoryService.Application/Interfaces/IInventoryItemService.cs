@@ -6,8 +6,8 @@ namespace InventoryService.Interfaces.Services
     {
         Task<List<InventoryItemDto>> GetAllsAsync();
         Task<InventoryItemDto> GetInventoryItemAsync(Guid id);
-        Task<InventoryItemDto> CreateInventoryItemAsync(InventoryItemDto item);
-        Task<InventoryItemDto> UpdateInventoryItemAsync(InventoryItemDto item);
+        Task<InventoryItemDto> CreateAsync(InventoryItemDto item);
+        Task<InventoryItemDto> UpdateAsync(InventoryItemDto item);
         Task DeleteInventoryItemAsync(Guid id);
     }
 }

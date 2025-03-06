@@ -9,7 +9,7 @@ namespace InventoryService.Domain.Interfaces
 {
     public  interface IInventoryItemRepository
     {
-        Task AddAsync(InventoryItem inventory);
+        Task CreateAsync(InventoryItem inventory);
         Task DeleteAsync(InventoryItem inventory);
         Task<InventoryItem> GetAsync(Guid id);
         Task<IEnumerable<InventoryItem>> GetAllAsync();

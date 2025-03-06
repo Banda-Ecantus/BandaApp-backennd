@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryService.Domain.Models
 {
-    [Table("inventoryitems")]
+    [Table("inventoryitem")]
 
     public class InventoryItem
     {
         [Key]
         [Column("guid")]
-        public Guid Guid { get; set; }
+        public Guid Guid { get; set; } = Guid.NewGuid();
 
         [Required]
         [MaxLength(100)]
@@ -26,11 +26,14 @@ namespace InventoryService.Domain.Models
         public required string SerialNumber { get; set; }
 
         [MaxLength(255)]
-        [Column("image")]
-        public string? Image { get; set; }
+        [Column("category")]
+        public string? Category { get; set; }
 
         [MaxLength(255)]
-        [Column("imageurl")]
-        public string? ImageUrl { get; set; }
+        [Column("type")]
+        public string? Type { get; set; }
+
+        [Column("disposable")]
+        public bool Disposable { get; set; }
     }
 }

@@ -70,6 +70,15 @@ namespace Shared.Domain {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error ao persistir dados no banco de dados..
+        /// </summary>
+        public static string inventoryCreationError {
+            get {
+                return ResourceManager.GetString("inventoryCreationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ocorreu um erro ao recuperar os itens de inventário do banco de dados..
         /// </summary>
         public static string inventoryRetrievalError {
@@ -77,7 +86,28 @@ namespace Shared.Domain {
                 return ResourceManager.GetString("inventoryRetrievalError", resourceCulture);
             }
         }
-        
+        /// <summary>
+        /// Looks up a localized string similar to Ocorreu um erro ao deletar o item de inventário do banco de dados..
+        ///     
+        public static string inventoryDeletionError
+        {
+            get
+            {
+                return ResourceManager.GetString("inventoryDeletionError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Ocorreu um erro ao atualizar o item de inventário no banco de dados..
+        /// 
+        public static string inventoryUpdateError
+        {
+            get
+            {
+                return ResourceManager.GetString("inventoryUpdateError", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Audiência inválida na configuração do Keycloak. Verifique os parâmetros do token..
         /// </summary>
@@ -106,7 +136,7 @@ namespace Shared.Domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erro ao acessar o inventário no banco de dados PostgreSQL..
+        ///   Looks up a localized string similar to Erro ao acessar o  banco de dados PostgreSQL..
         /// </summary>
         public static string postgresInventoryError {
             get {

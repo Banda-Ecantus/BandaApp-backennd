@@ -1,9 +1,8 @@
 using InventoryService.API.Configurations;
+using Keycloak.AuthServices.Authentication;
+using Keycloak.AuthServices.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Shared.ExceptionHandling;
-using Shared.Infrastructure;
-using Shared.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,39 +18,19 @@ builder.Services.AddSwaggerGen();
 // Load configuration from environment variables
 builder.Configuration.AddEnvironmentVariables();
 
-// Register HttpClient for the middleware
-builder.Services.AddHttpClient<KeycloackAuthenticationMiddleware>();
 
-// Configurar autenticação com Keycloak
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-    .AddJwtBearer(options =>
-    {
-        options.Authority = SharedSettings.kcAuthUrl;
-        options.Audience = Settings.kcClientInventoryId;
-        options.RequireHttpsMetadata = true;
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = false,
-            ValidIssuer = $"{SharedSettings.kcAuthUrl}/realms/{SharedSettings.kcRealm}",
-            ValidateAudience = false,
-            ValidAudience = Settings.kcClientInventoryId,
-            ValidateLifetime = false
-        };
-    });
+builder.Services
+.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddKeycloakWebApi(builder.Configuration);
 
-// Configurar políticas de autorização
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("InventoryPolicy", policy =>
-    {
-        policy.RequireAuthenticatedUser();
-        policy.RequireClaim("scope", "inventory.read");
-    });
-});
+builder.Services
+.AddAuthorization()
+.AddKeycloakAuthorization()
+.AddAuthorizationBuilder()
+.AddPolicy("InventoryPolicy",
+policy => policy.RequireResourceRolesForClient(
+    "bandaapp_backend_inventory",
+["inventory.read"]));
 
 DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services);
 
@@ -69,8 +48,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Use the custom authentication middleware
-app.UseMiddleware<KeycloackAuthenticationMiddleware>();
+//// Use the custom authentication middleware
+//app.UseMiddleware<KeycloackAuthenticationMiddleware>();
 
 app.UseAuthorization();
 

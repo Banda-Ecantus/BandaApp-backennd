@@ -1,4 +1,5 @@
-﻿using InventoryService.Interfaces.Services;
+﻿using InventoryService.Application.DTOS;
+using InventoryService.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace InventoryService.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class InventoryItemController : ControllerBase
     {
         private readonly IInventoryItemService _service;
@@ -21,40 +22,43 @@ namespace InventoryService.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-
-                var result = await _service.GetAllsAsync();
-                return Ok(result);
+            var result = await _service.GetAllsAsync();
+            return Ok(result);
         }
 
-        // GET api/<InventoryController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return "value";
+            var result = await _service.GetInventoryItemAsync(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
         }
 
-        // POST api/<InventoryController>
+
         [HttpPost]
-        public Task<IActionResult> Post()
+        public async Task<IActionResult> Post(InventoryItemDto item)
         {
-            // Method not implemented
-            throw new NotSupportedException("This method is not implemented.");
+            var result = await _service.CreateAsync(item);
+            return Ok(result);
         }
 
-        // PUT api/<InventoryController>/5
+
         [HttpPut("{id}")]
-        public Task<IActionResult> Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(InventoryItemDto item)
         {
-            // Method not implemented
-            throw new NotSupportedException("This method is not implemented.");
+            var result = await _service.UpdateAsync(item);
+            return Ok(result);
         }
 
-        // DELETE api/<InventoryController>/5
+
         [HttpDelete("{id}")]
-        public Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            // Method not implemented
-            throw new NotSupportedException("This method is not implemented.");
+            await _service.DeleteInventoryItemAsync(id);
+            return Ok();
         }
     }
 }
