@@ -10,13 +10,13 @@ namespace InventoryService.API.Controllers
     [ApiController]
     public class CategoryController(ICategoryService categoryService) : ControllerBase
     {
-        private readonly ICategoryService _categoryService = categoryService;
+        private readonly ICategoryService _service = categoryService;
 
         // GET: api/<CategoryController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await _categoryService.GetAllsAsync();
+            var result = await _service.GetAllsAsync();
             return Ok(result);
         }
 
@@ -24,7 +24,7 @@ namespace InventoryService.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var result = await _categoryService.GetCategoryAsync(id);
+            var result = await _service.GetCategoryAsync(id);
             if (result == null)
             {
                 return NotFound();
@@ -34,17 +34,22 @@ namespace InventoryService.API.Controllers
 
         // POST api/<CategoryController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CategoryDto item)
+        public async Task<IActionResult> Post([FromBody] CategoryDto request )
         {
-            var result = await _categoryService.CreateAsync(item);
+            var result = await _service.CreateAsync(request);
             return Ok(result);
         }
 
         // PUT api/<CategoryController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(CategoryDto item)
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] CategoryDto request = null)
         {
-            var result = await _categoryService.UpdateAsync(item);
+            var result = await _service.UpdateAsync(request);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
 
@@ -52,7 +57,7 @@ namespace InventoryService.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _categoryService.DeleteCategoryAsync(id);
+            await _service.DeleteCategoryAsync(id);
             return Ok();
         }
     }

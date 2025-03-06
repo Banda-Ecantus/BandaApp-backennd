@@ -3,6 +3,7 @@ using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Shared.ExceptionHandling;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
+    opt.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+    opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -33,6 +39,7 @@ policy => policy.RequireResourceRolesForClient(
 ["inventory.read"]));
 
 DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services);
+
 
 var app = builder.Build();
 

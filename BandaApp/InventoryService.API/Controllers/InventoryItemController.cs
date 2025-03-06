@@ -38,10 +38,15 @@ namespace InventoryService.API.Controllers
         }
 
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(InventoryItemDto item)
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] InventoryItemDto item)
         {
             var result = await _service.UpdateAsync(item);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
 

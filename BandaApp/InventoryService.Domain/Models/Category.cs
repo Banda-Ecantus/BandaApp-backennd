@@ -8,7 +8,7 @@ namespace InventoryService.Domain.Models
     {
         [Key]
         [Column("guid")]
-        public Guid id { get; set; } = Guid.NewGuid();
+        public Guid Guid { get; set; } = Guid.NewGuid();
 
         [Required]
         [MaxLength(100)]
