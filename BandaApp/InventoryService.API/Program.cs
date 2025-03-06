@@ -55,9 +55,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//// Use the custom authentication middleware
-//app.UseMiddleware<KeycloackAuthenticationMiddleware>();
-
 app.UseAuthorization();
 
 app.MapControllers();

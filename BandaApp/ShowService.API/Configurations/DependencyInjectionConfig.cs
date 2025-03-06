@@ -1,13 +1,12 @@
-﻿
-using InventoryService.Infrastructure.CrossCutting.IoC.IoC;
+﻿using ShowService.Infrastructure.IoC;
 
-namespace InventoryService.API.Configurations
+namespace ShowService.API.Configurations
 {
     public static class DependencyInjectionConfig
     {
         public static void AddDependencyInjectionConfiguration(this IServiceCollection services)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+            ArgumentNullException.ThrowIfNull(services);
             NativeInjectorBootStrapper.RegisterDbContext(services);
             NativeInjectorBootStrapper.RegisterServices(services);
             NativeInjectorBootStrapper.RegisterRepositories(services);

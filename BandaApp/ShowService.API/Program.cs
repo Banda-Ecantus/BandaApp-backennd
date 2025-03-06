@@ -1,5 +1,5 @@
 using Shared.ExceptionHandling;
-using Shared.Infrastructure.Configurations;
+using ShowService.API.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +13,9 @@ builder.Services.AddSwaggerGen();
 
 // Adicionar Autorização
 builder.Services.AddAuthorization();
+
+DependencyInjectionConfig.AddDependencyInjectionConfiguration(builder.Services);
+
 
 var app = builder.Build();
 
