@@ -16,6 +16,7 @@ namespace InventoryService.Application.DTOS
         public string? Type { get; set; }
 
         public bool Disposable { get; set; }
+        public bool Allocated { get; set; }
         public required Category Category { get; set; }
     }
 }

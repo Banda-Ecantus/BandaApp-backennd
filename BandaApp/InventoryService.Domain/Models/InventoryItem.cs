@@ -34,6 +34,9 @@ namespace InventoryService.Domain.Models
         [Column("type")]
         public string? Type { get; set; }
 
+        [Column("allocated")]
+        public bool Allocated  { get; set; }
+
         [Column("disposable")]
         public bool Disposable { get; set; }
         public required Category Category { get; set; }
