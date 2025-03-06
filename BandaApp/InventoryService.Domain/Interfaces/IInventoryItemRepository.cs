@@ -13,6 +13,7 @@ namespace InventoryService.Domain.Interfaces
         Task DeleteAsync(InventoryItem inventory);
         Task<InventoryItem> GetAsync(Guid id);
         Task<IEnumerable<InventoryItem>> GetAllAsync();
-        Task UpdateAsync(InventoryItem inventory);  
+        Task UpdateAsync(InventoryItem inventory);
+        Task<IEnumerable<InventoryItem>> GetByCategoryAsync(Guid categoryId);   
     }
 }

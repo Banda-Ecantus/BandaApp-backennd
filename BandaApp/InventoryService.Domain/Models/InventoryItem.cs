@@ -25,9 +25,10 @@ namespace InventoryService.Domain.Models
         [Column("serialnumber")]
         public required string SerialNumber { get; set; }
 
-        [MaxLength(255)]
-        [Column("category")]
-        public string? Category { get; set; }
+        [Required]
+        [Column("categoryId")]
+        [ForeignKey("Category")]
+        public Guid CategoryId { get; set; }
 
         [MaxLength(255)]
         [Column("type")]
@@ -35,5 +36,6 @@ namespace InventoryService.Domain.Models
 
         [Column("disposable")]
         public bool Disposable { get; set; }
+        public required Category Category { get; set; }
     }
 }

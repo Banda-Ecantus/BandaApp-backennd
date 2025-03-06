@@ -10,6 +10,7 @@ namespace InventoryService.Application.AutoMapper
         public InvetoryProfile()
         {
             CreateMap<InventoryItem, InventoryItemDto>().ReverseMap();
+            CreateMap<Category, CategoryDto>().ReverseMap();
         }
     }
 }

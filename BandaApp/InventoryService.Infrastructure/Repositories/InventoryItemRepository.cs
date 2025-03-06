@@ -18,7 +18,7 @@ namespace InventoryService.Infrastructure.Repositories
         {
             try
             {
-                await _dbContext.InventoryItems.AddAsync(inventory);
+                await _dbContext.InventoryItem.AddAsync(inventory);
                 await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException dbEx)
@@ -28,8 +28,8 @@ namespace InventoryService.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresInventoryError);
-                throw new GenericException(SharedResources.postgresInventoryError);
+                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresError);
+                throw new GenericException(SharedResources.postgresError);
             }
         }
 
@@ -37,7 +37,7 @@ namespace InventoryService.Infrastructure.Repositories
         {
             try
             {
-                _dbContext.InventoryItems.Remove(inventory);
+                _dbContext.InventoryItem.Remove(inventory);
                 await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException dbEx)
@@ -48,8 +48,8 @@ namespace InventoryService.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresInventoryError);
-                throw new GenericException(SharedResources.postgresInventoryError);
+                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresError);
+                throw new GenericException(SharedResources.postgresError);
 
             }
         }
@@ -58,7 +58,7 @@ namespace InventoryService.Infrastructure.Repositories
         {
             try
             {
-                var result = await _dbContext.InventoryItems.ToListAsync();
+                var result = await _dbContext.InventoryItem.ToListAsync();
                 return result;
             }
             catch (DbUpdateException dbEx)
@@ -68,8 +68,8 @@ namespace InventoryService.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresInventoryError);
-                throw new GenericException(SharedResources.postgresInventoryError);
+                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresError);
+                throw new GenericException(SharedResources.postgresError);
             }
         }
 
@@ -77,7 +77,7 @@ namespace InventoryService.Infrastructure.Repositories
         {
             try
             {
-                var result = await _dbContext.InventoryItems.FirstOrDefaultAsync(x => x.Guid == id);
+                var result = await _dbContext.InventoryItem.FirstOrDefaultAsync(x => x.Guid == id);
                 return result;
             }
             catch (DbUpdateException dbEx)
@@ -88,8 +88,27 @@ namespace InventoryService.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresInventoryError);
-                throw new GenericException(SharedResources.postgresInventoryError);
+                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresError);
+                throw new GenericException(SharedResources.postgresError);
+            }
+        }
+
+        public async Task<IEnumerable<InventoryItem>> GetByCategoryAsync(Guid categoryId)
+        {
+            try
+            {
+                var result = await _dbContext.InventoryItem.Where(x => x.CategoryId == categoryId).ToListAsync();
+                return result;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                _logger.LogError(dbEx, "{ErrorMessage}", SharedResources.inventoryRetrievalError);
+                throw new ValidationException(SharedResources.inventoryRetrievalError);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresError);
+                throw new GenericException(SharedResources.postgresError);
             }
         }
 
@@ -98,7 +117,7 @@ namespace InventoryService.Infrastructure.Repositories
             try
             {
 
-                _dbContext.InventoryItems.Update(inventory);
+                _dbContext.InventoryItem.Update(inventory);
                 return _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException dbEx)
@@ -108,8 +127,8 @@ namespace InventoryService.Infrastructure.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresInventoryError);
-                throw new GenericException(SharedResources.postgresInventoryError);
+                _logger.LogError(ex, "{ErrorMessage}", SharedResources.postgresError);
+                throw new GenericException(SharedResources.postgresError);
             }
         }
     }

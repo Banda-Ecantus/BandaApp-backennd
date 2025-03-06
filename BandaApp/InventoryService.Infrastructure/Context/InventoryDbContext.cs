@@ -17,7 +17,7 @@ namespace InventoryService.Infrastructure.Context
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }
-        public DbSet<InventoryItem> InventoryItems { get; set; }
-
+        public DbSet<InventoryItem> InventoryItem { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

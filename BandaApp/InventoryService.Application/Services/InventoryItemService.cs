@@ -28,6 +28,12 @@ namespace InventoryService.Application.Services
             return result;
         }
 
+        public async Task<List<InventoryItemDto>> GetByCategoryAsync(Guid categoryId)
+        {
+            var result = _mapper.Map<List<InventoryItemDto>>(await _repository.GetByCategoryAsync(categoryId));
+            return result;
+        }
+
         public async Task<InventoryItemDto> CreateAsync(InventoryItemDto item)
         {
 
@@ -44,9 +50,13 @@ namespace InventoryService.Application.Services
             return _mapper.Map<InventoryItemDto>(inventory);
         }
 
-        public Task DeleteInventoryItemAsync(Guid id)
+        public async Task DeleteInventoryItemAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var inventoryItem = await _repository.GetAsync(id);
+            if (inventoryItem != null)
+            {
+                await _repository.DeleteAsync(inventoryItem);
+            }
         }
     }
 }
