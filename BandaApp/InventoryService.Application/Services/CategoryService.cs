@@ -3,6 +3,10 @@ using InventoryService.Application.DTOS;
 using InventoryService.Application.Interfaces;
 using InventoryService.Domain.Interfaces;
 using InventoryService.Domain.Models;
+using InventoryService.Interfaces.Services;
+using Microsoft.Extensions.Logging;
+using Shared.Domain;
+using Shared.ExceptionHandling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +15,12 @@ using System.Threading.Tasks;
 
 namespace InventoryService.Application.Services
 {
-    public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper) : ICategoryService
+    public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper, IInventoryItemService inventoryItemService, ILogger<CategoryService> logger) : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository = categoryRepository;
         private readonly IMapper _mapper = mapper;
+        private readonly IInventoryItemService _inventoryItemService = inventoryItemService;
+        private readonly ILogger<CategoryService> _logger = logger;
 
         public async Task<CategoryDto> CreateAsync(CategoryDto category)
         {
@@ -25,8 +31,26 @@ namespace InventoryService.Application.Services
 
         public async Task DeleteCategoryAsync(Guid id)
         {
-            var category = await _categoryRepository.GetAsync(id) ?? throw new Exception("Category not found");
-            await _categoryRepository.DeleteAsync(category);
+            try
+            {
+                if (await _inventoryItemService.IsInvetoryItemVinculatedToCategory(id))
+                {
+                    throw new ValidationException("Existem itens vinculados a esta Categoria");
+                }
+                var category = await _categoryRepository.GetAsync(id) ?? throw new ValidationException("Categoria não encontrada");
+                await _categoryRepository.DeleteAsync(category);
+            }
+            catch(ValidationException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError(ex, "{ErrorMessage}", ex.Message);
+                throw new GenericException(SharedResources.UnexpectedError);
+            }
+           
         }
 
         public async Task<List<CategoryDto>> GetAllsAsync()

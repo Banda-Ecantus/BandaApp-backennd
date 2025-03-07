@@ -118,5 +118,10 @@ namespace InventoryService.Infrastructure.Repositories
         {
             return await _dbContext.InventoryItem.AnyAsync(i => i.SerialNumber == serialNumber);
         }
+
+        public async Task<bool> IsInvetoryItemVinculatedToCategory(Guid id)
+        {
+            return await _dbContext.InventoryItem.AnyAsync(i => i.CategoryId == id);
+        }
     }
 }

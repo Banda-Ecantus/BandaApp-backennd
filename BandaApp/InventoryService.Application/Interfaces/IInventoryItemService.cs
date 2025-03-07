@@ -9,5 +9,6 @@ namespace InventoryService.Interfaces.Services
         Task<InventoryItemDto> CreateAsync(InventoryItemDto item);
         Task<InventoryItemDto> UpdateAsync(InventoryItemDto item);
         Task DeleteInventoryItemAsync(Guid id);
+        Task<bool> IsInvetoryItemVinculatedToCategory(Guid id);
     }
 }

@@ -73,5 +73,10 @@ namespace InventoryService.Application.Services
                 await _repository.DeleteAsync(inventoryItem);
             }
         }
+
+        public async Task<bool> IsInvetoryItemVinculatedToCategory( Guid id)
+        {
+            return await _repository.IsInvetoryItemVinculatedToCategory(id);
+        }
     }
 }

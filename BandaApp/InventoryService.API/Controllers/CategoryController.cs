@@ -40,9 +40,9 @@ namespace InventoryService.API.Controllers
             return Ok(result);
         }
 
-        // PUT api/<CategoryController>/5
+        // PUT api/<CategoryController>
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] CategoryDto request = null)
+        public async Task<IActionResult> Put([FromBody] CategoryDto request)
         {
             var result = await _service.UpdateAsync(request);
             if (result == null)

@@ -15,6 +15,7 @@ namespace InventoryService.Domain.Interfaces
         Task<IEnumerable<InventoryItem>> GetAllAsync();
         Task UpdateAsync(InventoryItem inventory);
         Task<bool> SerialNumberExistsAsync(string serialNumber);
+        Task<bool> IsInvetoryItemVinculatedToCategory(Guid id);
 
     }
 }
