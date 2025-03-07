@@ -113,5 +113,10 @@ namespace InventoryService.Infrastructure.Repositories
                 throw new GenericException(SharedResources.postgresError);
             }
         }
+
+        public async Task<bool> SerialNumberExistsAsync(string serialNumber)
+        {
+            return await _dbContext.InventoryItem.AnyAsync(i => i.SerialNumber == serialNumber);
+        }
     }
 }

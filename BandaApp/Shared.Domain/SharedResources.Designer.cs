@@ -223,5 +223,16 @@ namespace Shared.Domain
                 return ResourceManager.GetString("categoryUpdateError", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Número de série já existente.
+        /// </summary>
+        public static string SerialNumberExistsError
+        {
+            get
+            {
+                return ResourceManager.GetString("SerialNumberExistsError", resourceCulture);
+            }
+        }
     }
 }
